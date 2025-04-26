@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <meta charset="UTF-8">
+        <meta name="description" content="A guide by Jon Taylor on how to solve the 3x3 rubiks cube">
+        <meta name="author" context="Jon Taylor">
+
+        <title>
+            How to Solve a 3x3 by Jon Taylor
+        </title>
+    <!-- -------------------------------css---------------------------------------------- -->
+    <style> 
+        body {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.9)), url(background3by3website.jpg);
+        }
+
+        h1, h2 {
+            background-color: yellow;        
+        }
+
+        p {
+            background-color: white;
+            width: fit-content;
+            padding: 5px;
+            border: solid black 2px;
+        }
+
+        h2.thetitle{
+            border-style: solid;
+            border-width: 7px;
+            border-color: black;
+            background-color: yellow;
+        }
+        .title {
+            text-align: center;
+            width: fit-content;
+            padding-left: 5px;
+            padding-right: 5px;
+            padding-top: 1px;
+            padding-bottom: 1px;
+            border-style: solid;
+            border-width: 7px;
+            border-color: black;
+            background-color: yellow;
+            outline-style: solid;
+            outline-width: 3px;
+            outline-color: darkmagenta;
+            margin: 0 auto;
+            text-shadow: 2px 2px 4px darkred;
+        }
+
+        p.borderthis {
+            width: fit-content;
+            padding: 5px;
+            border-style: solid;
+            border-width: 7px;
+            border-color: black;
+            background-color: yellow;
+            outline-style: solid;
+            outline-width: 3px;
+            outline-color: darkmagenta;
+            margin: 0 auto;
+            margin-top: 10px
+        }
+        
+        ol.borderthistoo {
+            width: fit-content;
+            padding-left: 20px;
+            padding-right: 5px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            border-style: solid;
+            border-width: 7px;
+            border-color: black;
+            background-color: yellow;
+            outline-style: solid;
+            outline-width: 3px;
+            outline-color:darkmagenta;
+            margin: 0 auto;
+            margin-top: 10px;
+        }
+
+        .layers {
+            width: fit-content;
+            padding: 5px;
+        }
+
+        .therubikscubepieces {
+            width: fit-content;
+            padding: 5px;
+        }
+
+        .algo {
+            width: fit-content;
+            padding: 5px;
+        }
+
+        .stepone {
+            width: fit-content;
+            padding: 5px;
+        }
+        .steptwo {
+            width: fit-content;
+            padding: 5px;
+        }.stepthree {
+            width: fit-content;
+            padding: 5px;
+        }.stepfour {
+            width: fit-content;
+            padding: 5px;
+        }.stepfive {
+            width: fit-content;
+            padding: 5px;
+        }.stepsix {
+            width: fit-content;
+            padding: 5px;
+        }.stepseven {
+            width: fit-content;
+            padding: 5px;
+        }
+
+        .whiteoutone{
+            background-color: white;
+            width: fit-content;
+            border: solid 2px black;
+            padding-left: -5px;
+            padding-right: 10px;
+            margin-bottom: 10px;
+        }
+
+    </style>
+
+    </head>
+<!-- -------------------------------Intro---------------------------------------------- -->
+    <body>
+        <div class="title">
+            <h1><u>Introduction to understanding the 3x3 Rubiks Cube</u></h1>
+        </div>    
+        <p class="borderthis"><strong>
+            Go through the list 1,2,3 & 4 in order and click the underlined blue texts for a dropdown of the instructions.
+            <ol class="borderthistoo">
+                <li>Layers</li>
+                <li>The Rubiks Cube Pieces</li>
+                <li>Algorithm, Symbols & Their Meaning</li>
+                <li>Steps</li>
+            </ol>
+        </strong>
+<!-- -----------------------------Layers------------------------------------------------ -->
+
+            <h2 class="toggle thetitle layers" style="cursor: pointer; color:blue"><u>Layers:</u></h2>
+            <div class="content" style="display: none;">
+                <p>
+                        Throughout the process of explaining how to solve the cube, I will be describing it in 
+                        <strong><em>Layers
+                        </em></strong>. there is a <em>top layer</em>, a
+                        <em>middle layer</em>, a <em>bottom layer</em> and lastly a 
+                        <em>front layer</em>
+                    <br>
+                    <br>
+                        <img src="layers/Top Layer.jpg" alt="3x3 rubiks cube top layer" width="100" height="100">
+                        <img src="layers/MiddleLayer.jpg" alt="3x3 rubiks cube middle layer" width="100" height="100">
+                        <img src="layers/BottomLayer.jpg" alt="3x3 rubiks cube bottom layer" width="100" height="100">
+                        <img src="layers/Front Layer.jpg" alt="3x3 rubiks cube front layer" width="100" height="100">
+                </p>  
+            </div>
+<!-- ---------------------------------Pieces-------------------------------------------- -->
+
+            <h2 class="toggle thetitle therubikscubepieces" style="cursor: pointer; color:blue"><u>The Rubiks Cube Pieces:</u></h2>
+            <div class="content" style="display: none;">
+                <div class="whiteoutone">
+                    <ul class="bulletcube">
+                        <li><em>8 Corner Pieces</em></li>
+                        <li><em>12 Side Pieces</em></li>
+                        <li><em>6 Center Pieces</em></li>
+                    </ul>   
+                </div>
+                    <img src="pieces/CSC.png">
+                <br>
+                <p>
+                    Corner pieces always have 3 colors that are associated with the 3 sides they align with.
+                </p>
+                <p>
+                    Edge pieces always have 2 colors and are associated with the 2 sides they align with. 
+                </p>
+                <p>
+                    And lasty the center pieces are one color,spin but are <u>stationary</u>, meaning they cannot rotate around the cube the way side & corner peices can. Because of this the red center piece will always be opposite of the orange center piece, white across from yellow and blue across from green.
+                </p>
+                <p>
+                    ***If you really want to understand the structure and how the pieces function in the cubes design. Take the cube apart and put it back together.***
+                </p>
+            </div>
+    <!-- ----------------------------------Algos------------------------------------------- -->
+
+            <h2 class="toggle thetitle algo" style="cursor: pointer; color:blue"><u>Algorithms, symbols & Their Meaning</u></h2>
+            <div class="content" style="display: none;">
+                <p>
+                    Algorithms are a step by step set of movements. When performing the
+                    algorithms make sure to keep the same side facing you the entire time. 
+                    The symbols I have created for the algorthims look like this
+                    <br></br>
+                    <img src="algo_symbols/Bottom Layer to the left.png" alt="bottom to the left" width="100" height="100">
+                    <img src="algo_symbols/Bottom Layer to the right.png" alt="bottom to the right" width="100" height="100">
+                    Moving the bottom layer to the left or right
+                    <br></br>
+                    <img src="algo_symbols/Top to the right.png" alt="top to the right" width="100" height="100">
+                    <img src="algo_symbols/Top to the left.png" alt="top to the left" width="100" height="100">
+                    Moving the top layer to the right or left
+                    <br></br>
+                    <img src="algo_symbols/Clockwise.png" alt="spinning the front clockwise" width="100" height="100">
+                    <img src="algo_symbols/Counter Clockwise.png" alt="rotating the cube counter clockwise" width="100" height="100">
+                    Rotating the front side of the rubiks cube clockwise or counter Clockwise
+                    <br></br>
+                    <img src="algo_symbols/Left side up.png" alt="moving the left side up" width="100" height="100">
+                    <img src="algo_symbols/Left side down.png" alt="moving the left side down" width="100" height="100">
+                    Moving the Left side up or down
+                    <br></br>
+                    <img src="algo_symbols/Right side up.png" alt="moving the right side up" width="100" height="100">
+                    <img src="algo_symbols/Right side down.png" alt="moving the right side down"width="100" height="100">
+                    Moving the Right side up or down
+                    <br></br>
+
+                    <em> Things to know: </em>
+                    
+                    ***When performing the movements of the algorithm symbols keep the cube stationary, meaning the same center piece facing you the whole time. it will be important to know which side to have facing you when performing certain algorithms (it will make more sense when you get to your first algorithm)*** 
+                </p>
+            </div>
+    <!-- ----------------------------------step 1------------------------------------------- -->
+        
+            <h2 class="toggle thetitle stepone" style="cursor: pointer; color: blue; text-decoration: underline;"><u>Step 1:</u>
+            </h2>
+            <div class="content" style="display: none;">
+                    <p>
+                    The first step is going to be the most difficult to explain and will require you to do some imagining and visualizing to do. There are no algorithms for this step and is why it is the most difficult. But essentially your goal will be to get <q>The Cross</q>. <u>while</u> lining the colors of side pieces up with there respective sides. Throughout these 7 steps I use the example of starting with solving the blue side (you can pick anyside, but for this example we will start with the blue side)
+                    </p>
+
+                    <p>
+                    <u><Strong>Goal For this step: </Strong></u>
+                    </p>
+                    <br>
+                    <div style="text-align: center;">
+                        <img src="step1/CrossGoal1.jpg" width="200" height="200">
+                        <img src="step1/CrossGoal2.jpg" width="200" height="200">
+                    </div>
+                    <br>
+                    <p>
+                    <u>Further explanation:</u> for the blue side there are 4 side pieces that that have the color blue on them. (the blue side borders the red,orange,yellow & white side). therefore there should be a blue/orange side pice, blue/red side piece, blue/yellow side piece and a blue/white side piece.  Notice that the blue "cross" is solved and the side pieces are aligned with the next sides as well 
+                
+                    Also note when i say sides i mean the center piece. the color of the center piece represents the color of that whole side. For example in the images above, notice the orange center piece aligns with the orange side of the <u>Orange & Blue Side Piece</u> while the blue center piece aligns with the blue side of the <u>Orange & Blue Side Peice</u> It sounds more confusing when i say it like that but essentially orange center next orange side piece with blue center next to blue side piece.
+                    </p>
+            </div>
+    <!-- ---------------------------------step 2-------------------------------------------- -->
+        
+            <h2 class="toggle thetitle steptwo" style="cursor: pointer; color: blue; text-decoration: underline;"><u>Step 2:</u></h2>
+            <div class="content" style="display: none;"> 
+                <p>
+                        Next step will be to <q>fill in the 4 corner pieces</q> of the blue side. This will be your first algorithm and it requires only 3 sets of moves.
+                        or what I like to call: "bring it down, move it over and bring it up". You will do this to all
+                        4 corners until the first layer is complete! when performing the algorithm, always keep the blue side orientated on the top of the cube. 
+                        <p>
+                            ***This step also requires some envisioning & visualizing how the cube pieces change spots as you rotate the cube***
+                        </p>
+                        <p>
+                            ***Its important to first find the corner piece, then see where it needs to go, then respectively where it is in oreitation of the whole cube for the algortithm to work***
+
+                    <br></br>
+                        <img src="algo_symbols/Right side down.png" width="100" height="100">
+                        <img src="algo_symbols/Bottom Layer to the right.png" width="100" height="100">
+                        <img src="algo_symbols/Right side up.png" width="100" height="100">
+                    <br></br>
+                        In the example video I am moving the <u>blue, orange, yellow corner piece</u> into the location it needs to be. NOTICE the orientation of the peice and where it is located before the algorithm is performed. 
+                    <br></br>
+                        <video src="CornerPieceVid.mp4" width="150" height="150" controls></video>
+                    <br></br>
+                        Now this can be down the opposite side as well, if you wanted 
+                        to get the corner piece from the right side up to the left, 
+                        its the same algorithm, just on the left side
+                    <br></br>
+                        <img src="algo_symbols/Left side down.png" width="100" height="100">
+                        <img src="algo_symbols/Bottom Layer to the right.png" width="100" height="100">
+                        <img src="algo_symbols/Left side up.png" width="100" height="100">
+                    <br></br>
+                        example: (in this example i am getting the blue, red and white corner piece into the location it needs to be). similar to the first step before performing the algorithm, 
+                        the red side is facing me when performing the algorithm and notice the blue 
+                        side of the corner piece is now facing to the right.
+                    <br></br>
+                        <video src="CornerPieceVid2.mp4" width="150" height="150" controls></video>
+
+                        <p>for this step it requires some thinking... so play around with the algortihms and the orientation and see what is working and what is not. 
+                        </p>
+                    </div>
+    <!-- ---------------------------------------step 3-------------------------------------- -->
+        
+        <h2 class="toggle thetitle stepthree" style="cursor: pointer; color: blue; text-decoration: underline;"><u>Step 3:</u></h2>
+            <div class="content" style="display: none;"> 
+                <p>
+                    Congratulations! you got the first layer, NOW flip the cube over so the finished layer is
+                    now orientated on the bottom. Your next goal in this step is to get the <a href="layers/MiddleLayer.jpg"><u style="color: blue;">Middle Layer</u></a> solved. To do this, you will first need to locate the side pieces that will fit inbetween the two center pieces of the middle layer.
+                    once you find the piece move the top layer around until the piece is lined up with one side as shown in the example.
+
+                    Now the side piece will either need to go in to the left or to the right. Depending on which way it needs to go. 
+                    
+                    <br></br>
+                    Moving the side piece in to the left of the side you are facing:
+                    <img src="algo_symbols/Top to the right.png" alt="top to the right" width="50" height="50">
+                    <img src="algo_symbols/Left side up.png" alt="left side up" width="50" height="50">
+                    <img src="algo_symbols/Top to the left.png" alt="top to the left" width="50" height="50">
+                    <img src="algo_symbols/Left side down.png" alt="left side down" width="50" height="50">
+                    <img src="algo_symbols/Top to the left.png" alt="top to the left" width="50" height="50">
+                    <img src="algo_symbols/Clockwise.png" alt="front clockwise" width="50" height="50">
+                    <img src="algo_symbols/Top to the right.png" alt="top to the right" width="50" height="50">
+                    <img src="algo_symbols/Counter Clockwise.png" alt="counter clockwise" width="50" height="50">
+                    <br></br>
+                    heres an example putting the yellow & orange side piece in its correct position using the left algorithm, Notice the yellow & orange side piece starts with the yellow side of the yellow/orange side piece lined up with the yellow side/center piece. The yellow side is facing me when performing the algorithm
+                    <br></br>
+                    Before Algorithm: <img src="step 3/yelloworangewrong.jpg" alt="yellow and orange piece not in the right spot" width="100" height="100">
+                    After Algorithm: <img src="step 3/yelloworangeright.jpg" width="100" height="100">
+                    
+                    <br></br>
+                    Moving side piece to the right of the side you are facing:
+                    <img src="algo_symbols/Top to the left.png" alt="top to the left" width="50" height="50">
+                    <img src="algo_symbols/Right side up.png" alt="right side up" width="50" height="50">
+                    <img src="algo_symbols/Top to the right.png" alt="top to the right" width="50" height="50">
+                    <img src="algo_symbols/Right side down.png" alt="right side down" width="50" height="50">
+                    <img src="algo_symbols/Top to the right.png" alt="top to the right" width="50" height="50">
+                    <img src="algo_symbols/Counter Clockwise.png" alt="counter clockwise" width="50" height="50">
+                    <img src="algo_symbols/Top to the left.png" alt="top to the left" width="50" height="50">
+                    <img src="algo_symbols/Clockwise.png" alt="clockwise" width="50" height="50">
+                    <br></br>
+
+                    Heres an example putting the Red & Yellow side piece in its correct position using the right algorithm, again notice the Red & yellow side piece starts with the yellow side of the yellow/red side piece lined up with its yellow side/center piece. The yellow side is facing me when performing the algortihm 
+                    <br></br>
+                    Before Algorithm: <img src="step 3/redyellowwrong.jpg" width="100" height="100">
+                    After Algorithm: <img src="step 3/yellowredright.jpg" width="100" height="100">
+                    <br>
+                    You will do this for all 4 side pieces until the middle layer is finished!
+                </p>
+            </div>
+        <!-- ----------------------step 4------------------------------------------------------- -->
+
+        <h2 class="toggle thetitle stepfour" style="cursor: pointer; color: blue; text-decoration: underline;"><u>Step 4:</u></h2>        
+        <div class="content" style="display: none;">
+        <p>
+            Your almost there! now you will need to get "the cross". (similar to step 1, the difference being the side pieces do not need to line up with the adjecent side(that's the next step))
+            <br>
+            ***notice do not pay attention to the corner pieces and if they are solved or not, that will be step 6, only worry about getting the cross!***
+            <br>
+            you will encounter 1 of 4 scenarios:
+            <br></br>
+            <div class="whiteoutone">
+                <ul>
+                    <li>the "dot" (center piece)</li> 
+                    <img src="step 4/dot.jpeg" alt="the dot or center piece top side orientation" width="100" height="100">
+                    
+                    <li>the "L" (center piece and two side pieces in a L shape)</li> 
+                    <div id="the L">
+                        <img src="step 4/L.jpeg" alt="the L top side orientation" width="100" height="100">
+                    </div>
+
+                    <li>the "line" (center piece and two side pieces in a Line)</li> 
+                    <div id="the line">
+                        <img src="step 4/line.jpeg" alt="the line top side orientation" width="100" height="100">
+                    </div>
+
+                    <li>"cross". (the center piece and the surrounding side pieces)</li> <img src="step 4/cross.jpeg" alt="the cross top side orientation" width="100" height="100">
+                </ul> 
+            </div>
+                <p>When performing the algorithm, ALWAYS have the unfinished side orientated on the the top side throughout the algorithm movements. (or always keeping the finished blue side orientated on the bottom)If you get the cross, congrats you can skip this step, thats the goal orientation for step 4.
+                </p>   
+                <p>
+                If you get the dot you will need to do the algorithm 3 times. If you encounter the 
+                dot, it doesn't matter which way its orientated (as long as you keep the blue side orientated on the bottom when holding the cube), once you perform the algorithm it will bring you to the
+                </p>
+                <p>
+                "L". Make sure the "L" is orientated the upper left corner (all while still keeping the blue finished side orientated as the bottom side and your unfinished side orientated on top) as shown in the <a href="#the L"><u style="color: blue;">image</u></a> The "L" will bring you to the 
+                </p>
+                
+                <p>
+                "Line". once you have the line you will want the line to be horizontal to you in its orientation as shown in the <a href="#the line"><u style="color: blue;">image</u></a> repeat the algorithm
+                one more time and it should give you the cross!
+                </p>
+                <p>
+                <u><strong> Algorithm:</strong></u>
+                </p>
+            
+                <img src="algo_symbols/Clockwise.png" width="100" height="100">
+                <img src="algo_symbols/Right Side Up.png" width="100" height="100">
+                <img src="algo_symbols/Top to the left.png" width="100" height="100">
+                <img src="algo_symbols/Right side down.png" width="100" height="100">
+                <img src="algo_symbols/Top to the right.png" width="100" height="100">
+                <img src="algo_symbols/Counter Clockwise.png" width="100" height="100">
+        
+        </div>
+<!-- -----------------------------------------Step 5------------------------------------ -->
+
+        <h2 class="toggle thetitle stepfive" style="cursor: pointer; color: blue; text-decoration: underline;"><u>Step 5:</u></h2>
+        <div class="content" style="display: none;">
+            <p>
+            Now you may notice that the cross is finished but the side pieces of the cross dont line up with
+            there respective sides. (as you did when you did step 1 when solving the cross)
+            
+            <br>
+            This is the goal of step 5: to line up the side peices of cross you did in the previous step with there respective sides. 
+            
+            <br><br>
+            You will encounter 2 scenarios: 
+            <br>
+            the first scenario (and most likely) is when you spin/rotate the top layer you will see 2 of the side pieces of the cross line up with there sides while the other 2 are not lined up, as <u>shown</u>
+            <br>
+            <img src="Step5/Scenario1.jpg" width="100" height="100">
+            <img src="Step5/Scenario1_2.jpg" width="100" height="100">
+            
+
+            <br><br>
+            (Take a look at the 2 images, the image is of the same cube but from both sides so you can see that on one side of the cube, the green/yellow & the green/orange side pieces of the cross are lined up while on the other side of the cube the green/white & the green/red side pieces are not lined up with there respective sides). 
+            <br><br>
+            With this scenario you will need to perform the algorithm 1 time. The tricky part of explaining this step is the orientation of the cube.
+            Make sure the cube is orientated with the unfinished side on top,essentially you want one of the lined up sides on the facing to the right side and the other lined
+            up side on what would be the back of the cube, when holding it. (again the blue side is finished and on the bottom when holding it and the green cross is on top of the cube). to check you are orientated correct. one of the NON lined up side pieces is facing you or would be considered the front of the cube and the other NON lined up side would be facing to the left and on the left side while holding the cube. NOW you can carry out the algorithm below. 
+            
+            <br><br>
+            The second scenario is that NON of side pieces line up with there respective side, no matter how you turn the cube. so essentially just perform the algortihm below (orientated with the blue side on bottom and the green cross on top) then it should bring you to scenario 1 :D
+
+            <br><br>
+            <u><strong> The Algortithm: </strong></u>
+            <br>
+            <br>
+            <img src="algo_symbols/Right Side Up.png" width="100" height="100">
+            <img src="algo_symbols/Top to the left.png" alt="top to the left" width="100" height="100">
+            <img src="algo_symbols/Right side down.png" alt="moving the right side down"width="100" height="100">
+            <img src="algo_symbols/Top to the left.png" alt="top to the left" width="100" height="100">
+            <img src="algo_symbols/Right side up.png" alt="moving the right side up" width="100" height="100">
+            <img src="algo_symbols/Top to the left.png" alt="top to the left" width="100" height="100">
+            <img src="algo_symbols/Top to the left.png" alt="top to the left" width="100" height="100">
+            <img src="algo_symbols/Right side down.png" alt="moving the right side down"width="100" height="100">
+            </p>
+        </div>
+<!-- ----------------------Step 6------------------------------------------------------- -->
+
+        <h2 class="toggle thetitle stepsix" style="cursor: pointer; color: blue; text-decoration: underline;"><u>Step 6:</u></h2>
+        <div class="content" style="display: none;">
+            <p>
+                Getting Close! 
+                <br><br>
+                Now we got the cross, WITH the side pieces lined up and the cube should look 
+                like <u>this:</u>.<br>
+                (view from both sides)
+
+                <img src="step6/finishedstep5_1.jpg" width="100" height="100">
+                <img src="step6/finishedstep5_2.jpg" width="100" height="100">
+
+                <br><br>
+                Next we need to orientate the cube pieces so that they are in the right spots
+                This doesn't mean they need to be solve but just need to be in the location of there respective sides (this may sound confusing at first but keep reading and refering to the images throughout this step). Now! what do i Mean by <q>right spots?!?!</q>
+                <br><br>
+                You will encounter 1 of 3 scenarios, NON of the corner pieces are in the right spot/location, 1 is in the right spot/location or ALL are in the right spot/location
+                <br><br>
+                In the above image,
+                you can see the corner pieces are not in the right spots/location because the colors do not
+                match with the sides it is next to it. (its hard to tell from the images but refer to the other 2 scenarios for a better understanding of peices being in the right spot but not solved yet)
+
+                <br><br> HERE we have 1 corner piece in the right spot, while the other 3 corner pieces are not. the follow images is of the same cube from different angles to see each corner piece. ***NOTICE*** the corner piece that is in the right spot (highlighted in green) looks as if you could pull the piece out rotate it and put it back in. while the others (highlighted in pink) are not in the right spot.
+                
+                Here is an example of when all the peices are in the <q>right spots</q>, but may not be <q> Solved</q> yet. when they are all in the right spot you can continue to step 7. ***NOTE*** that when they are in the right spot, they may already be solved, we are focusing on the pieces being in the right spot rather then them being solved in this step.
+                <br>
+                <br>
+                example of 1 corner piece right and the other 3 wrong:
+                <br>
+                    <style>
+                    .row-of-images {
+                        display: flex;
+                        gap: 20px; /* Space between items */
+                        background-color: white;
+                        width: fit-content;
+                        padding: 5px;
+                        border: solid black 2px;
+
+                    }
+                    .item {
+                      text-align: center; /* Centers text under the image */
+                    }
+                  </style>
+
+                    <div class="row-of-images">
+                        <div class="images">           
+                            <img src="step6/1right.jpg" width="275" height="275"><br>
+                                <u>Colors of the corner pieces</u>
+                                <span style="color: green;">
+                                    (Green,red,yellow)
+                                </span>
+
+                                <br>
+                                
+                                <u>Colors of respective sides:</u>
+                                <span style="color: green;">
+                                    (Green,red,yellow)
+                                </span>
+                        </div>
+                    
+                        <div class="images">
+                            <img src="step6/2wrong.jpg" width="275" height="275"><br>
+                                <u>Colors of the corner pieces</u>
+                                <span style="color: red;">
+                                    (Green,White,<span style="color: red; background-color: yellow;">Red</span>)
+                                </span>
+
+                                <br>
+
+                                <u>Colors of respective sides:</u>
+                                <span style="color: red;">
+                                    (Green,White,<span style="color: red; background-color: yellow;">Orange</span>)
+                                </span>
+                        </div>
+                    
+                        <div class="images">
+                            <img src="step6/3wrong.jpg" width="275" height="275"><br>
+                                <u>Colors of the corner pieces</u>
+                                <span style="color: red;">
+                                    (Green,Orange,<span style="color: red; background-color: yellow;">White</span>)
+                                </span>
+
+                                <br>
+
+                                <u>Colors of respective sides:</u>
+                                <span style="color: red;">
+                                    (Green,Orange,<span style="color: red; background-color: yellow;">Yellow</span>)
+                                </span>
+                        </div>
+                    
+                        <div class="images">
+                            <img src="step6/4wrong.jpg" width="275" height="275"><br>
+
+                                <u>Colors of the corner pieces</u>
+                                <span style="color: red;">
+                                    (Green,<span style="color: red; background-color: yellow;">Orange</span>,<span style="color: red; background-color: yellow;">Yellow</span>)
+                                </span>
+                                
+                                <br>
+                                
+                                <u>Colors of respective sides:</u>                                
+                                <span style="color: red;">
+                                    (Green,<span style="color: red; background-color: yellow;">Red</span>,<span style="color: red; background-color: yellow;">White</span>)
+                                </span>
+                        </div>
+                    </div>
+                <br>
+                <p>
+                Too explain this look at the texts under the images. see how only 1 corner pieces is in the right spot has the same colors as its sides, while the other 3 do not
+
+
+                <br></br>
+                to do this you will need to perform this algorithm 1 or 2 times. In the first scenario you will find one piece. that is in 
+                the right spot. Once you found 1 piece in the right spot orientate the cube so the unsolved side is on top,
+                and the corner piece that is in the right spot is in the front right corner like <u>this</u>.<br></br>
+                In the second senario none of the corner pieces are in the right spot, do the algorithm from any side (as long as the unsolved layer is still orientated on top)
+                </p>
+            <br><br>
+            
+            <p>
+            <u>GOAL FOR THIS STEP:</u> <br>
+            (notice how the color of the corner pieces MATCH the color of the respective sides)
+            </p>
+            <style>
+                .rowofimages {
+                    display: flex;
+                    gap: 20px; /* Space between items */
+                    background-color: white;
+                    width: fit-content;
+                    padding: 5px;
+                    border: solid black 2px;
+                }
+
+                .item {
+                text-align: center; /* Centers text under the image */
+                }
+            </style>
+
+            <div class="rowofimages">
+                <div class="goal6">
+                    <img src="step6/goal6_1.jpg" width="300" height="300">
+                        <span style="color: green">
+                            (Green,red,yellow)<br>
+                            (Green,red,yellow)
+                        </span>
+                </div>
+
+                <div class="goal6">
+                    <img src="step6/goal6_2.jpg" width="300" height="300">
+                        <span style="color: green">
+                            (Green,red,white)<br>
+                            (Green,red,white)
+                        </span>
+                </div>
+
+                <div class="goal6">
+                    <img src="step6/goal6_3.jpg" width="300" height="300">
+                        <span style="color: green">
+                            (Green,orange,white)<br>
+                            (Green,orange,white)
+                        </span>
+                </div>
+
+                <div class="goal6">
+                    <img src="step6/goal6_4.jpg" width="300" height="300">
+                        <span style="color: green">
+                            (Green,orange,yellow)<br>
+                            (Green,orange,yellow)
+                        </span>
+                </div>
+            </div>
+            <br>
+            <p>
+            When performing the algorithm, You will want to have the cube orientated with you the corner piece that is in the correct spot on the <q> front left side</q>. essentailly have the red side facing you the whole time, with green side facing up the whole time and blue side oriented on the bottom. while holding the cube. 
+            </p>
+
+            <br>
+            <br>
+            <p>
+                <u>Orientated like this:</u>
+            </p>
+            <br>
+                <img src="step6/orientation6.jpg" width="200" height="200">
+            <br>
+            <p>
+                The Algorithm:
+            </p>
+            <br>
+                <img src="algo_symbols/Right side up.png" alt="moving the right side up" width="100" height="100">
+                <img src="algo_symbols/Top to the right.png" alt="top to the right" width="100" height="100">
+                <img src="algo_symbols/Left side up.png" alt="moving the left side up" width="100" height="100">
+                <img src="algo_symbols/Top to the left.png" alt="top to the left" width="100" height="100">
+                <img src="algo_symbols/Right side down.png" alt="moving the right side down"width="100" height="100">
+                <img src="algo_symbols/Top to the right.png" alt="top to the right" width="100" height="100">
+                <img src="algo_symbols/Left side down.png" alt="moving the left side down" width="100" height="100">
+            
+        </div>
+
+<!-- -----------------------------Step 7-------------------------------------------------->
+
+        <h2 class="toggle thetitle stepseven" style="cursor: pointer; color: blue; text-decoration: underline;"><u>Step 7:</u></h2>
+    
+        <div class="content" style="display: none;">
+            <p>
+                You are on your last step. this algorithm can be tricky but if you remain commited it will work.
+                
+                you will encounter 1 of 3 scenarios:
+                <style>
+                    .listbackground {
+                    background-color: white;
+                    width: fit-content;
+                    border: solid black 2px;
+                    padding-left: -10px;
+                    padding-right: 20px;
+                }
+                </style>
+
+                <div class="listbackground">
+                    <ul>
+                        <li>none of the corner pieces solved</li>
+                        <li>1 of the corner pieces solved</li>
+                        <li>2 of the corner pieces solved</li>
+                    </ul>
+                </div>
+
+                <p>
+                    regardless of which scenario you get, you will simply pick a corner piece that is not solved and perform the algorithm. you will want the orientation with the corner piece that is not solved in orientated in the front right postions (see below).
+                </p>
+
+                <p>
+                    essentially repeat the algorithm until the corner piece that was unsolved is solved. once its solved or fixed, move the top layer over to another unsolved piece and repeat the algorithm.
+                </p>
+
+                <p>
+                    So now we have all the remaining corner pieces in the right position, some may be solved, some may not.
+                    With this algorithm you will repeat it until the corner piece of the top layer is fixed, the rest of the cube
+                    may not be fixed but thats okay. Once the corner piece is finished you bring the next corner piece <u>over</u>. then repeat
+                    the algorithm for the next unsolved corner piece and do that until all the remaining corner pieces are fixed!
+                    One thing to notice after fixing each corner piece when excuting the algorithm is that the corner of the cube should remain solved like <u>this</u>
+                </p>
+
+                <p>
+                    There you go! you did it! CONGRATULATIONS!  
+                </p>
+            
+        </div>
+    <!-- ----------------------------------------------------------------------------- -->
+    
+        <script>
+            document.querySelectorAll('.toggle').forEach(toggle => {
+                toggle.addEventListener('click', () => {
+                    const content = toggle.nextElementSibling;
+                    content.style.display = content.style.display === 'none' ? 'block' : 'none';
+                });
+            });
+        </script>
+
+    </body>
+</html>
